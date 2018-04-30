@@ -132,8 +132,12 @@ public class MainActivity extends AppCompatActivity {
         // add alarmTriggerTime seconds to the calendar object
         cal.add(Calendar.SECOND, alarmTriggerTime);
 
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);//get instance of alarm manager
-        manager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);//set alarm manager with entered timer by converting into milliseconds
+        //get instance of alarm manager
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        //set alarm manager with entered timer by converting into milliseconds
+        manager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
+        //set a repeating alarm
+        //manager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 10*1000, pendingIntent);
 
         Toast.makeText(this, "Alarm Set for " + alarmTriggerTime + " seconds.", Toast.LENGTH_SHORT).show();
     }
